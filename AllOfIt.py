@@ -353,3 +353,17 @@ def StandardConverter():
     FracCoX = '%s/%s' % (RCoX, CoY)
     print 'y = %sx + %s' % (FracCoX, AnInt)
 #Converts x+y=b to y=mx+b
+def Motion(x1, y1, x2, y2):
+    T = y2-y1
+    B = x2-x1
+    if T < 0 and B < 0:
+        T *= -1
+        B *= -1
+    while GCF(int(T), int(B)) > 1:
+            Div = GCF(T, B)
+            T = T / Div
+            B = B / Div
+    Dec = float(T)/(B)
+    Frac = '%s/%s' % ((T), (B))
+    return [Dec, Frac]
+#Gets the motion, and just the motion
