@@ -81,6 +81,7 @@ def Therom():
         Therom()
 #Triangles
 def GCF(arg1, arg2):
+    h = []
     if arg1 < 0:
         arg1 = arg1 * -1
     elif arg2 < 0:
@@ -99,7 +100,8 @@ def GCF(arg1, arg2):
             l += 1
     CF.sort()
     h = CF[::-1]
-    return h[0]    
+    for item in h: #Kept throwing errors, only this worked
+        return item #Intentional return
 #Not sure if different from GCFN, returns the GCF of two numbers, made for pointslope()
 def pointslope():
     y1 = int(raw_input('y1?'))
