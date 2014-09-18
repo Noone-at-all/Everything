@@ -227,18 +227,13 @@ from math import sqrt
 #Imports the sqrt function from math
 def Distance():
     xaa = raw_input('X1?')
-    yaa = raw_input('Y1?')
     xba = raw_input('X2?')
+    yaa = raw_input('Y1?')
     yba = raw_input('Y2?')
-    inputs = [xaa, yaa, xba, yba]
-    xaa = fracfloat(xaa)
-    xba = fracfloat(xba)
-    yaa = fracfloat(yaa)
-    yba = fracfloat(yba)
-    x1 = float(xaa)
-    x2 = float(xba)
-    y1 = float(yaa)
-    y2 = float(yba)
+    x1 = fracfloat(xaa)
+    x2 = fracfloat(xba)
+    y1 = fracfloat(yaa)
+    y2 = fracfloat(yba)
     Ans = sqrt(((x2-x1)**2)+(y2-y1)**2)
     print str(Ans) + ', Distance'
     MP1 = ((x1+x2)/2)
