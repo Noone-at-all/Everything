@@ -117,7 +117,7 @@ def pointslope():
         motionl = str(x2 - x1)
         motiont = int(y2 - y1) / GCF(int(motionu), int(motionl))
         motionb = int(x2 - x1) / GCF(int(motionu), int(motionl))
-        while GCF(int(motionu), int(motionl)) > 1:
+        while GCF(int(motiont), int(motionb)) > 1:
             motiont = int(y2 - y1) / GCF(int(motionu), int(motionl))
             motionb = int(x2 - x1) / GCF(int(motionu), int(motionl))
         motion = '%s/%s' % (motiont, motionb)
