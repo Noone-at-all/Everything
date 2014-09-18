@@ -227,8 +227,8 @@ from math import sqrt
 #Imports the sqrt function from math
 def Distance():
     xaa = raw_input('X1?')
-    xba = raw_input('X2?')
     yaa = raw_input('Y1?')
+    xba = raw_input('X2?')
     yba = raw_input('Y2?')
     x1 = fracfloat(xaa)
     x2 = fracfloat(xba)
@@ -335,7 +335,7 @@ def MMMRX(List, desired, x):
 def StandardConverter():
     CoX = int(raw_input('What is x\'s coefficent?'))
     CoY = int(raw_input('What is y\'s coefficent?'))
-    AnInt = int(raw_input('What is the number that would be they-intercept?'))
+    AnInt = int(raw_input('What is the number that would be the y-intercept?'))
     RCoX = CoX * -1
     print '%sy = %sx + %s' %  (CoY, RCoX, AnInt)
     FCoX = RCoX / float(CoY)
