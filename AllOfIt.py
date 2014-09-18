@@ -104,15 +104,15 @@ def GCF(arg1, arg2):
         return item #Intentional return
 #Not sure if different from GCFN, returns the GCF of two numbers, made for pointslope()
 def pointslope():
-    y1 = int(raw_input('y1?'))
     x1 = int(raw_input('x1?'))
+    y1 = int(raw_input('y1?'))
     S = raw_input('Do you have a slope?').lower()
     if S not in 'yn' or S == '':
         print 'Only "y" and "n" are accepted inputs'
         pointslope()
     elif S == 'n':
-        y2 = int(raw_input('y2?'))
         x2 = int(raw_input('x2?'))
+        y2 = int(raw_input('y2?'))
         motionu = str(y2 - y1)
         motionl = str(x2 - x1)
         motiont = int(y2 - y1) / GCF(int(motionu), int(motionl))
@@ -221,7 +221,7 @@ def fracfloat(frac):
         Ans = float(Thing[0]) / float(Thing[1])
         return Ans
     else:
-        return frac
+        return int(frac)
 #Converts fractions to floats
 from math import sqrt
 #Imports the sqrt function from math
@@ -235,7 +235,7 @@ def Distance():
     y1 = fracfloat(yaa)
     y2 = fracfloat(yba)
     Ans = sqrt(((x2-x1)**2)+(y2-y1)**2)
-    print str(Ans) + ', Distance'
+    print str(Ans) + ', Distance.' + str(Ans**2) + 'Squared'
     MP1 = ((x1+x2)/2)
     MP2 = ((y1+y2)/2)
     MP = '(%s, %s), midpoint.' % (MP1, MP2)
