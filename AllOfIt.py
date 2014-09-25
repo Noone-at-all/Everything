@@ -167,7 +167,7 @@ def pointslope():
             h = True
         slope = '%s/%s' % (str(top), str(bottom))
         k = m*x1
-        print 'Point-slope form: y - %s = %sx - %s' % (y1, slope, k)
+        print 'Point-slope form: y - %s = %s(x - %s)' % (y1, slope, k)
         cosa = y1 - k
         print 'Slope-intercept form: y = %sx + %s' % (slope, cosa)
         if raw_input('Standard form?') == 'y':
