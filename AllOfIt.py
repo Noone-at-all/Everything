@@ -363,7 +363,8 @@ def Motion(x1, y1, x2, y2):
     return [Dec, Frac]
 #Gets the motion, and just the motion
 def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficent
-    Coarga = int(raw_input('x^2\'s coefficent?'))
+    #Is still in progress, use CFS() when possible.
+    Coarga = int(raw_input('x^2\'s coefficent?')) 
     arga = int(raw_input('What do you want factored?'))
     arga = arga*Coarga
     if arga < 0:
@@ -396,20 +397,20 @@ def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficen
         if h[v] % Coarga != 0 and CF[v] % Coarga != 0:
             Diff = h[v] - CF[v]
             Sum = h[v] + CF[v]
-            CFDD[Diff] = 'Diff: %s, factors: %s%s,(-)%s%s, sum: %s.' % (Diff, Coarga, h[v], Coarga, CF[v], Sum)
-            CFSD[Sum] = 'Diff: %s, factors: %s%s,(+)%s%s, sum: %s.' % (Diff, Coarga, h[v], Coarga, CF[v], Sum)
+            CFDD[Diff] = 'Diff: %s, factors: %sx%s,(-)%s, sum: %s.' % (Diff, Coarga, h[v], Coarga, CF[v], Sum)
+            CFSD[Sum] = 'Diff: %s, factors: %sx%s,%sx(+)%s, sum: %s.' % (Diff, Coarga, h[v], Coarga, CF[v], Sum)
             v += 1
         elif h[v] % Coarga != 0:
             Diff = h[v] - CF[v]
             Sum = h[v] + CF[v]
-            CFDD[Diff] = 'Diff: %s, factors: %s%s,(-)%s, sum: %s.' % (Diff, Coarga, h[v], (CF[v]/Coarga), Sum)
-            CFSD[Sum] = 'Diff: %s, factors: %s%s,(+)%s, sum: %s.' % (Diff, Coarga, h[v], (CF[v]/Coarga), Sum)
+            CFDD[Diff] = 'Diff: %s, factors: %sx%s,(-)%s, sum: %s.' % (Diff, Coarga, h[v], (CF[v]/Coarga), Sum)
+            CFSD[Sum] = 'Diff: %s, factors: %sx%s,(+)%s, sum: %s.' % (Diff, Coarga, h[v], (CF[v]/Coarga), Sum)
             v += 1
         elif CF[v] % Coarga != 0:
             Diff = h[v] - CF[v]
             Sum = h[v] + CF[v]
-            CFDD[Diff] = 'Diff: %s, factors: %s,(-)%s%s, sum: %s.' % (Diff, (h[v]/Coarga), Coarga, (CF[v]), Sum)
-            CFSD[Sum] = 'Diff: %s, factors: %s,(+)%s%s, sum: %s.' % (Diff, (h[v]/Coarga), Coarga, (CF[v]), Sum)
+            CFDD[Diff] = 'Diff: %s, factors: %s,%sx(-)%s, sum: %s.' % (Diff, (h[v]/Coarga), Coarga, (CF[v]), Sum)
+            CFSD[Sum] = 'Diff: %s, factors: %s,%sx(+)%s, sum: %s.' % (Diff, (h[v]/Coarga), Coarga, (CF[v]), Sum)
             v += 1
         else:
             Diff = h[v] - CF[v]
