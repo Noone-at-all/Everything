@@ -102,8 +102,8 @@ def GCF(arg1, arg2):
     h = CF[::-1]
     for item in h: #Kept throwing errors, only this worked
         return item #Intentional return
-#Not sure if different from GCFN, returns the GCF of two numbers, made for pointslope()
-def pointslope():
+#Returns the GCF of two numbers, made for pointslope()
+def pointslope(): #Dependent on GCF
     x1 = int(raw_input('x1?'))
     y1 = int(raw_input('y1?'))
     S = raw_input('Do you have a slope?').lower()
@@ -181,34 +181,13 @@ def pointslope():
         else:
             print 'You\'re done!'
 #(x1, y1) + (slope or coord pair) = y=mx+b (and standard) format
-def GCFN(arg1, arg2):
-    if arg1 < 0:
-        arg1 = arg1 * -1
-    elif arg2 < 0:
-        arg2 = arg2 * -1
-    CF = [1]
-    l = 1
-    if arg1 > arg2:
-        g = arg2
-    elif arg2 >= arg1:
-        g = arg1
-    for item in range(int(g)):
-        if arg1 % l == 0 and arg2 % l == 0:
-            CF.append(l)
-            l += 1
-        else:
-            l += 1
-    CF.sort()
-    h = CF[::-1]
-    return h[0]
-#See GCF, probably made for IOPC()
 def IOPC():
     top = float(raw_input('What number should I multiply?'))
     bottom = float(raw_input('By what number?'))
     div = float(raw_input('And what should I divide their product by?'))
     tote = top*bottom
-    while GCFN(tote, div) > 1:
-        gcf = GCFN(tote, div)
+    while GCF(tote, div) > 1:
+        gcf = GCF(tote, div)
         tote = tote / gcf
         div = div / gcf
     res = tote/(div*1.0)
@@ -340,8 +319,8 @@ def StandardConverter():
     print '%sy = %sx + %s' %  (CoY, RCoX, AnInt)
     FCoX = RCoX / float(CoY)
     AnInt = AnInt / float(CoY)
-    while GCFN(RCoX, CoY) > 1:
-        TheGCF = GCFN(RCoX, CoY)
+    while GCF(RCoX, CoY) > 1:
+        TheGCF = GCF(RCoX, CoY)
         RCoX = RCoX / TheGCF
         CoY = CoY / TheGCF
     FCoX = RCoX / float(CoY)
