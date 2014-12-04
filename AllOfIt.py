@@ -341,6 +341,24 @@ def Motion(x1, y1, x2, y2):
     Frac = '%s/%s' % ((T), (B))
     return [Dec, Frac]
 #Gets the motion, and just the motion
+
+class RegPolygon: #A regular polygon
+    def __init__(self,sides):
+        self.sides = sides
+        self.SumIntAng = self.sides*180-360
+        self.IndivIntAng = self.SumIntAng/float(self.sides)
+        self.SumExtAng = 180.0
+        self.IndivExtAng = 180.0/self.sides
+    def __repr__(self):
+        print "Number of sides: %s" % self.sides
+        print "Sum of interior angle's measures: %s degrees" % self.SumIntAng
+        print "Measure of individual angles: %s degrees" % self.IndivIntAng
+        print "Sum of the measures of the exterior angles:  %s degrees" % self.SumExtAng
+        return "Measure of the indiviudal exterior angles: %s degrees" % self.IndivExtAng #Will only print if called by print
+def UseRegPolygon(sides, VarName="Regular Polygon"):
+    RegularPolygonDict[VarName] = RegPolygon(sides)
+    print RegularPolygonDict[VarName]
+#It's a class for a regular polygon, and a function for using it to calculate
 def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficent
     #Is still in progress, use CFS() when possible.
     #Using the input sequence 8, -3, -10, and 6, -3, -10 throws error about string formatting.
