@@ -356,6 +356,7 @@ class RegPolygon: #A regular polygon
         print "Sum of the measures of the exterior angles:  %s degrees" % self.SumExtAng
         return "Measure of the indiviudal exterior angles: %s degrees" % self.IndivExtAng #Will only print if called by print
 def UseRegPolygon(sides, VarName="Regular Polygon"):
+    RegularPolygonDict = {}
     RegularPolygonDict[VarName] = RegPolygon(sides)
     print RegularPolygonDict[VarName]
 #It's a class for a regular polygon, and a function for using it to calculate
