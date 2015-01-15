@@ -361,7 +361,7 @@ def UseRegPolygon(sides, VarName="Regular Polygon"):
     print RegularPolygonDict[VarName]
 #It's a class for a regular polygon, and a function for using it to calculate
 def FindNumSides(ang):
-    return 360.0/180.0-ang
+    return 360.0/(180.0-ang)
     #It takes a measure of an interior angle and returns the number of sides of the regular polygon that produces it.
 def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficent
     #Is still in progress, use CFS() when possible.
