@@ -417,7 +417,7 @@ def SimplifyRadical(Rad, coeff = 1):
             break
         PrevPSquare = PSquare
     return ['%s sqrt(%s)' % (PSquare, PrevPSquare), NumSteps]
-print SimplifyRadical(raw_input('What do you need simplified? [coefficent is second arg]'))
+print SimplifyRadical(raw_input('What do you need simplified?'), raw_input("Coefficent?"))
 #Simplifies radicals
 def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficent
     #Is still in progress, use CFS() when possible.
