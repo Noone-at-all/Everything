@@ -360,9 +360,60 @@ def UseRegPolygon(sides, VarName="Regular Polygon"):
     RegularPolygonDict[VarName] = RegPolygon(sides)
     print RegularPolygonDict[VarName]
 #It's a class for a regular polygon, and a function for using it to calculate
-def FindNumSides(ang):
-    return 360.0/(180.0-ang)
+def FindNumSides(Intang):
+    return 360.0/(180.0-Intang)
     #It takes a measure of an interior angle and returns the number of sides of the regular polygon that produces it.
+#from math import sqrt
+def SimplifyRadical(Rad, coeff = 1):
+    if coeff > 0:
+        rad = Rad*coeff
+    else:
+        rad = Rad
+    def GetPerfectSquares(argument):
+        PerfectSquares = []
+        for item in range(1+(argument/2)):
+            PerfectSquares.append(item**2)
+        return PerfectSquares
+    PerfectSquares = GetPerfectSquares(rad)
+    def GetFactors(arg):
+        factors = {}
+        templista = []
+        for tien in range(2, arg-1):
+            if arg % tien == 0:
+                templista.append(tien)
+            else:
+                pass
+        templistb = templista[::-1]
+        for item in range(len(templista)):
+            if templistb[item] in factors:
+                pass
+            else:
+                factors[templista[item]] = templistb[item]
+        return factors
+    def MakePSquareKeyList(factors, NoSquares = False):
+        keylist = []
+        for key in factors:
+            keylist.append(key)
+        keylist.sort()
+        if NoSquares:
+            for item in keylist:
+                for tien in keylist:
+                    if MakePSquareKeyList(GetFactors(tien)) != []:
+                        return [tien]
+                    else:
+                        pass
+                return min(keylist)
+        for item in keylist:
+            if item not in PerfectSquares:
+                keylist.remove(item)
+        return keylist
+    #Choose a loop type and start it in this line
+    factors = GetFactors(Rad)
+    print factors
+    keylist = MakePSquareKeyList(factors)
+    if keylist == []:
+        keylist = MakePSquareKeyList(factors, True)
+#Work in progress, supposed to auto simplify radicals without any unknowns
 def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficent
     #Is still in progress, use CFS() when possible.
     #Using the input sequence 8, -3, -10, and 6, -3, -10 throws error about string formatting.
