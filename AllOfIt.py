@@ -364,6 +364,12 @@ def FindNumSides(Intang):
     return 360.0/(180.0-Intang)
     #It takes a measure of an interior angle and returns the number of sides of the regular polygon that produces it.
 #from math import sqrt
+def IsPrime(n):
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            return False
+
+    return True
 def SimplifyRadical(Rad, coeff = 1):
     if coeff > 0:
         rad = Rad*coeff
@@ -390,30 +396,29 @@ def SimplifyRadical(Rad, coeff = 1):
             else:
                 factors[templista[item]] = templistb[item]
         return factors
-    def MakePSquareKeyList(factors, NoSquares = False):
+    def GetPSquare(factors, NoSquares = False):
         keylist = []
         for key in factors:
-            keylist.append(key)
+            if factors[key] in PerfectSquares:
+                return key
+            else:
+                keylist.append(key)
         keylist.sort()
-        if NoSquares:
-            for item in keylist:
-                for tien in keylist:
-                    if MakePSquareKeyList(GetFactors(tien)) != []:
-                        return [tien]
-                    else:
-                        pass
-                return min(keylist)
-        for item in keylist:
-            if item not in PerfectSquares:
-                keylist.remove(item)
-        return keylist
-    #Choose a loop type and start it in this line
-    factors = GetFactors(Rad)
-    print factors
-    keylist = MakePSquareKeyList(factors)
-    if keylist == []:
-        keylist = MakePSquareKeyList(factors, True)
-#Work in progress, supposed to auto simplify radicals without any unknowns
+        return (keylist[::-1])[0]
+    PrevPSquare = 1
+    NumSteps = 0
+    while not IsPrime(rad):
+        NumSteps += 1
+        factors = GetFactors(rad)
+        PSquare = GetPSquare(factors)
+        rad = rad/PSquare
+        print PSquare, ' sqrt', PrevPSquare
+        if IsPrime(rad):
+            break
+        PrevPSquare = PSquare
+    return ['%s sqrt(%s)' % (PSquare, PrevPSquare), NumSteps]
+print SimplifyRadical(raw_input('What do you need simplified? [coefficent is second arg]')
+#Simplifies radicals
 def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficent
     #Is still in progress, use CFS() when possible.
     #Using the input sequence 8, -3, -10, and 6, -3, -10 throws error about string formatting.
