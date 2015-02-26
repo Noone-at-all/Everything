@@ -417,8 +417,58 @@ def SimplifyRadical(Rad, coeff = 1):
             break
         PrevPSquare = PSquare
     return ['%s sqrt(%s)' % (PSquare, PrevPSquare), NumSteps]
-print SimplifyRadical(raw_input('What do you need simplified?'), raw_input("Coefficent?"))
+# print SimplifyRadical(raw_input('What do you need simplified?'), raw_input("Coefficent?")) 
+#^ Call line
 #Simplifies radicals
+
+
+#Commented out to prevent reimporting
+#from math import tan
+#from math import cos
+#from math import sin
+#from math import degrees
+#from math import radians
+def degsin(x):
+    return sin(radians(x))
+def degcos(x):
+    return cos(radians(x))
+def degtan(x):
+    return tan(radians(x))
+
+def soh(ang, known, knownchar):
+    if knownchar.lower() == 'o':
+        return known/degsin(ang)
+    elif knownchar.lower() == 'h':
+        return known*degsin(ang)
+    else:
+        return "ERROR_INVALID_CHAR_FOR_SOH"
+
+def cah(ang, known, knownchar):
+    if knownchar.lower() == 'a':
+        return known/degcos(ang)
+    elif knownchar.lower() == 'h':
+        return known*degcos(ang)
+    else:
+        return "ERROR_INVALID_CHAR_FOR_CAH"
+
+def toa(ang, known, knownchar):
+    if knownchar.lower() == 'o':
+        return known/degtan(ang)
+    elif knownchar.lower() == 'a':
+        return known*degtan(ang)
+    else:
+        return "ERROR_INVALID_CHAR_FOR_TOA"
+
+def findside(ang, known, knownchar, func):
+    if func[0] == 's':
+        return soh(ang, known, knownchar)
+    elif func[0] == 'c':
+        return cah(ang, known, knownchar)
+    elif func[0] == 't':
+        return toa(ang, known, knownchar)
+    else:
+        return "ERROR_INVALID_FUNCTION"
+#Solves right triangles with trig functions
 def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficent
     #Is still in progress, use CFS() when possible.
     #Using the input sequence 8, -3, -10, and 6, -3, -10 throws error about string formatting.
