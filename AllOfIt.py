@@ -347,8 +347,8 @@ class RegPolygon: #A regular polygon
         self.sides = sides
         self.SumIntAng = self.sides*180-360
         self.IndivIntAng = self.SumIntAng/float(self.sides)
-        self.SumExtAng = 180.0
-        self.IndivExtAng = 180.0/self.sides
+        self.SumExtAng = 360.0
+        self.IndivExtAng = 360.0/self.sides
     def __repr__(self):
         print "Number of sides: %s" % self.sides
         print "Sum of interior angle's measures: %s degrees" % self.SumIntAng
