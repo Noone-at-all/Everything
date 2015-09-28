@@ -473,7 +473,8 @@ def findside(ang, known, knownchar, func):
 
 
 #from math import sqrt
-#form math import radians
+#from math import radians
+#from math import degrees
 #commented out to prevent several imports
 def Vectorcompute(maga, anga, magb, angb) #Function containing all vector addition requirements, will become a class if needed
     class Vector(object):
@@ -504,7 +505,7 @@ def Vectorcompute(maga, anga, magb, angb) #Function containing all vector additi
 
     from math import atan
     def invtan(ang)
-        atan(radians(ang)) #inverse tangent function, made to take arguments in degrees not radians
+        degrees(atan(radians(ang))) #inverse tangent function, made to take arguments in degrees not radians
     def VectorAdd(VectorA, VectorB):
         def getvfmag(Vfxy):
             Magnitude(Vfxy[0], Vfxy[1])
