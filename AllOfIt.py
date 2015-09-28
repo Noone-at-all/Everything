@@ -473,52 +473,49 @@ def findside(ang, known, knownchar, func):
 
 
 #from math import sqrt
-#from math import radians
+#form math import radians
 #from math import degrees
 #commented out to prevent several imports
-def Vectorcompute(maga, anga, magb, angb) #Function containing all vector addition requirements, will become a class if needed
+def Vectorcompute(maga, anga, magb, angb): #Function containing all vector addition requirements, will become a class if needed
     class Vector(object):
-        def __init__(mag, ang):
+        def __init__(self, mag, ang):
             self.mag = mag
             self.ang = ang
-        def __repr__():
-            return "Facing %s with a magnitude of %s" (self.mag, self.ang)
+        def __repr__(self):
+            return "Facing %s with a magnitude of %s" % (self.ang, self.mag)
     VectorA = Vector(maga, anga)
     VectorB = Vector(magb, angb)
 
     def Magnitude(x2, y2, x1 = 0, y1 = 0):
-        x1 = fracfloat(x1)
-        x2 = fracfloat(x2)
-        y1 = fracfloat(y1)
-        y2 = fracfloat(y2)
         Ans = sqrt(((x2-x1)**2)+(y2-y1)**2)
-        print str(Ans) + ', Distance.' + str(Ans**2) + 'Squared'
+        return Ans
 
     def VectorGetxy(Vector, knownchar = 'h'):
         def getvx(Vector, knownchar):
             return findside(Vector.ang, Vector.mag, knownchar, 'c')
         def getvy(Vector, knownchar):
             return findside(Vector.ang, Vector.mag, knownchar, 's')
-        vx = getvx(mag, knownang, knownchar)
-        vy = getvy(mag, knownang. knownchar)
+        vx = getvx(Vector, knownchar)
+        vy = getvy(Vector, knownchar)
         return [vx, vy]
 
-    from math import atan
-    def invtan(ang)
-        degrees(atan(radians(ang))) #inverse tangent function, made to take arguments in degrees not radians
+    #from math import atan
+    def invtan(Vfxy):
+        return degrees(atan(float(Vfxy[1])/Vfxy[0])) #inverse tangent function, made to return in degrees not radians
     def VectorAdd(VectorA, VectorB):
         def getvfmag(Vfxy):
-            Magnitude(Vfxy[0], Vfxy[1])
-        def getvfxy(VectorA, VectorB)
+            return Magnitude(Vfxy[0], Vfxy[1])
+        def getvfxy(VectorA, VectorB):
             VAxy = VectorGetxy(VectorA)
             VBxy = VectorGetxy(VectorB)
             Vfx = VAxy[0] + VBxy[0]
             Vfy = VAxy[1] + VBxy[1]
             return [Vfx, Vfy]
         def getvfd(Vfxy):
-            return invtan(Vfxy[0]/Vfxy[1])
+            return invtan(Vfxy)
         Vfxy = getvfxy(VectorA, VectorB)
         return Vector(getvfmag(Vfxy), getvfd(Vfxy))
 
     print VectorAdd(VectorA,VectorB)
+#Solves vectors and returns a list contaning the results
 #Solves vectors and returns a list contaning the results
