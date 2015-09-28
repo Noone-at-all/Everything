@@ -202,7 +202,8 @@ def fracfloat(frac):
     else:
         return int(frac)
 #Converts fractions to floats
-from math import sqrt
+#from math import sqrt
+#commented out to prevent dual imports
 #Imports the sqrt function from math
 def Distance():
     xaa = raw_input('X1?')
@@ -469,96 +470,54 @@ def findside(ang, known, knownchar, func):
     else:
         return "ERROR_INVALID_FUNCTION"
 #Solves right triangles with trig functions
-def ImpCFS(): #Improved version of CFS(), should handle when x^2 has a coefficent
-    #Is still in progress, use CFS() when possible.
-    #Using the input sequence 8, -3, -10, and 6, -3, -10 throws error about string formatting.
-    #Line 35, 400 in git
-    #Seems to always fail with multiples of 6 and 4 as Coarga
-    #Fails often
-    """
-    Traceback (most recent call last):
-    File "<stdin>", line 80, in <module>
-    File "<stdin>", line 35, in ImpCFS
-    TypeError: not all arguments converted during string formatting
-    """
-    #Line 80 was function call
-    #Do not want
-    #Back to hard way
-    Coarga = int(raw_input('x^2\'s coefficent?')) 
-    arga = int(raw_input('What do you want factored?'))
-    arga = arga*Coarga
-    if arga < 0:
-        arg1 = arga * -1
-    elif arga > 0:
-        arg1 = arga
-    arg2 = arg1
-    CF = []
-    l = 1
-    g = arg1
-    for item in range(g):
-        if arg1 % l == 0 and arg2 % l == 0:
-            CF.append(l)
-            l += 1
-        else:
-            l += 1
-    CF.sort()
-    h = CF[::-1]
-    oh = 0
-    FList = []
-    for item in CF:
-        FList.append(''+ str(h[oh]) +' * '+ str(item) + '')
-        oh += 1
-    v = 0
-    Want = int(raw_input('Which difference/sum do you need?'))
-    CFDD = {}
-    CFSD = {}
-    DatInt = 3
-    for item in CF:
-        if h[v] % Coarga != 0 and CF[v] % Coarga != 0:
-            Diff = h[v] - CF[v]
-            Sum = h[v] + CF[v]
-            CFDD[Diff] = 'Diff: %s, factors: %sx%s,(-)%s, sum: %s.' % (Diff, Coarga, h[v], Coarga, CF[v], Sum)
-            CFSD[Sum] = 'Diff: %s, factors: %sx%s,%sx(+)%s, sum: %s.' % (Diff, Coarga, h[v], Coarga, CF[v], Sum)
-            v += 1
-        elif h[v] % Coarga != 0:
-            Diff = h[v] - CF[v]
-            Sum = h[v] + CF[v]
-            CFDD[Diff] = 'Diff: %s, factors: %sx%s,(-)%s, sum: %s.' % (Diff, Coarga, h[v], (CF[v]/Coarga), Sum)
-            CFSD[Sum] = 'Diff: %s, factors: %sx%s,(+)%s, sum: %s.' % (Diff, Coarga, h[v], (CF[v]/Coarga), Sum)
-            v += 1
-        elif CF[v] % Coarga != 0:
-            Diff = h[v] - CF[v]
-            Sum = h[v] + CF[v]
-            CFDD[Diff] = 'Diff: %s, factors: %s,%sx(-)%s, sum: %s.' % (Diff, (h[v]/Coarga), Coarga, (CF[v]), Sum)
-            CFSD[Sum] = 'Diff: %s, factors: %s,%sx(+)%s, sum: %s.' % (Diff, (h[v]/Coarga), Coarga, (CF[v]), Sum)
-            v += 1
-        else:
-            Diff = h[v] - CF[v]
-            Sum = h[v] + CF[v]
-            CFDD[Diff] = 'Diff: %s, factors: %s,(-)%s, sum: %s.' % (Diff, (h[v]/Coarga), (CF[v]/Coarga), Sum)
-            CFSD[Sum] = 'Diff: %s, factors: %s,(+)%s, sum: %s.' % (Diff, (h[v]/Coarga), (CF[v]/Coarga), Sum)
-            v += 1
-    if Want in CFDD:
-        print CFDD[Want]
-        print 'Diff'
-    if Want in CFSD:
-        print CFSD[Want]
-        print 'Sum'
-    elif Want not in CFSD and Want not in CFDD:
-        print '%s is not achievable with factors of %s' % (Want, arga)
-    Want = Want * -1
-    print 'Inverted diff/sum input, make changes as needed.'
-    if Want in CFDD:
-        print CFDD[Want]
-        print 'Diff'
-        DatInt = 1
-    if Want in CFSD:
-        print CFSD[Want]
-        print 'Sum'
-        DatInt = 1
-    if Want not in CFSD and Want not in CFDD:
-        print '%s is not achievable with factors of %s' % (Want, arga)
-        DatInt = 2
-    if DatInt == 3:
-        print 'You have encountered bug1, the number you want is apparently in one of the the factor lists, but the program didn\'t print it'
-    print 'Source EQ: %sx^2 + %sx + %s' % (Coarga, Want*-1, arga/Coarga)
+
+
+#from math import sqrt
+#form math import radians
+#commented out to prevent several imports
+def Vectorcompute(maga, anga, magb, angb) #Function containing all vector addition requirements, will become a class if needed
+    class Vector(object):
+        def __init__(mag, ang):
+            self.mag = mag
+            self.ang = ang
+        def __repr__():
+            return "Facing %s with a magnitude of %s" (self.mag, self.ang)
+    VectorA = Vector(maga, anga)
+    VectorB = Vector(magb, angb)
+
+    def Magnitude(x2, y2, x1 = 0, y1 = 0):
+        x1 = fracfloat(x1)
+        x2 = fracfloat(x2)
+        y1 = fracfloat(y1)
+        y2 = fracfloat(y2)
+        Ans = sqrt(((x2-x1)**2)+(y2-y1)**2)
+        print str(Ans) + ', Distance.' + str(Ans**2) + 'Squared'
+
+    def VectorGetxy(Vector, knownchar = 'h'):
+        def getvx(Vector, knownchar):
+            return findside(Vector.ang, Vector.mag, knownchar, 'c')
+        def getvy(Vector, knownchar):
+            return findside(Vector.ang, Vector.mag, knownchar, 's')
+        vx = getvx(mag, knownang, knownchar)
+        vy = getvy(mag, knownang. knownchar)
+        return [vx, vy]
+
+    from math import atan
+    def invtan(ang)
+        atan(radians(ang)) #inverse tangent function, made to take arguments in degrees not radians
+    def VectorAdd(VectorA, VectorB):
+        def getvfmag(Vfxy):
+            Magnitude(Vfxy[0], Vfxy[1])
+        def getvfxy(VectorA, VectorB)
+            VAxy = VectorGetxy(VectorA)
+            VBxy = VectorGetxy(VectorB)
+            Vfx = VAxy[0] + VBxy[0]
+            Vfy = VAxy[1] + VBxy[1]
+            return [Vfx, Vfy]
+        def getvfd(Vfxy):
+            return invtan(Vfxy[0]/Vfxy[1])
+        Vfxy = getvfxy(VectorA, VectorB)
+        return Vector(getvfmag(Vfxy), getvfd(Vfxy))
+
+    print VectorAdd(VectorA,VectorB)
+#Solves vectors and returns a list contaning the results
